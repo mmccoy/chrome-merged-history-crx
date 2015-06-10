@@ -21,6 +21,10 @@ body {
   margin-right: 12px;
 }
 
+.download, .bookmarkAdded {
+  margin-left: 12px;
+}
+
 .download .glyph {
   background: transparent url(/images/ic_file_download_48px.svg) no-repeat;
   background-size: cover;

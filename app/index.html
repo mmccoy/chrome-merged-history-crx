@@ -41,16 +41,18 @@
                   {{#each this}}
                     <li class="event {{eventType}}">
                       {{#ifEqual this "urlVisited"}}
-                        <img src="chrome://favicon/{{url}}" alt="">&nbsp; {{title}} <span class="muted-text">{{host}}</span>
+                        <span class="muted-text">{{timeFromNow}}</span> - <img src="chrome://favicon/{{url}}" alt="">&nbsp; {{title}} <span class="muted-text">{{host}}</span>
                       {{/ifEqual}}
 
                       {{#ifEqual this "download"}}
                         <div class="glyph"></div>
+                        <span class="muted-text">{{timeFromNow}}</span> -
                         Downloaded {{filename}} <a href="file://{{filename}}">Open Folder</a>
                       {{/ifEqual}}
 
                       {{#ifEqual this "bookmarkAdded"}}
                         <div class="glyph"></div>
+                        <span class="muted-text">{{timeFromNow}}</span> - 
                         {{title}} <span class="muted-text">{{host}}</span>
                       {{/ifEqual}}
                     </li>

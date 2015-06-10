@@ -29,25 +29,28 @@ Merged.renderTemplate = function(data) {
 Merged.getMergedStream = function() {
   var merged = _.union(this.visits, this.bookmarks);
   for (var i = 0; i < merged.length; i++) {
+    var item = merged[i];
+
     // Bookmark event
-    if (merged[i].dateAdded) {
-      merged[i].dateNormalized = moment(merged[i].dateAdded);
-      merged[i].eventType = 'bookmarkAdded';
+    if (item.dateAdded) {
+      item.dateNormalized = moment(item.dateAdded);
+      item.eventType = 'bookmarkAdded';
     } ;
 
     // Page visit event
-    if(merged[i].lastVisitTime) {
-      merged[i].dateNormalized = moment(merged[i].lastVisitTime);
-      merged[i].eventType = 'urlVisited';
+    if(item.lastVisitTime) {
+      item.dateNormalized = moment(item.lastVisitTime);
+      item.eventType = 'urlVisited';
     };
 
     // Download event
-    if (merged[i].endTime) {
-      merged[i].dateNormalized = moment(merged[i].endTime);
-      merged[i].eventType = 'download';
+    if (item.endTime) {
+      item.dateNormalized = moment(item.endTime);
+      item.eventType = 'download';
     }
+    item.timeFromNow = moment(item.dateNormalized).fromNow();
   }
-  
+
   var mergedSorted = _.sortBy(merged, function(o) {
     return o.dateNormalized;
   });
