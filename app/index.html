@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Merged Material History</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    </head>
+    <body class="showBookmarks showDownloads showURLs">
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="core-toolbar">
+          History Timeline Prototype
+        </div>
+
+        <div class="filters">
+          Showing
+            <select class="type-filter">
+              <option value="all" selected>all history</option>
+              <option value="page_visits">page visits</option>
+              <option value="downloads">downloads</option>
+              <option value="bookmarks">bookmarks</option>
+            </select>
+          from my_device
+        </div>
+        <div class="stream">
+          <script type="text/x-handlebars-template" id="historyTemplate">
+            <ol class="stream-list">
+              {{#each days}}
+                <li class="stream-date-header">{{@key}}</li>
+                <ol class="stream-day-list">
+                  {{#each this}}
+                    <li class="event {{eventType}}">
+                      {{#ifEqual this "urlVisited"}}
+                        <img src="chrome://favicon/{{url}}" alt="">&nbsp; {{title}} <span class="muted-text">{{host}}</span>
+                      {{/ifEqual}}
+
+                      {{#ifEqual this "download"}}
+                        <div class="glyph"></div>
+                        Downloaded {{filename}} <a href="file://{{filename}}">Open Folder</a>
+                      {{/ifEqual}}
+
+                      {{#ifEqual this "bookmarkAdded"}}
+                        <div class="glyph"></div>
+                        {{title}} <span class="muted-text">{{host}}</span>
+                      {{/ifEqual}}
+                    </li>
+                  {{/each}}
+                </ol>
+              {{/each}}
+            </ol>
+          </script>
+        </div>
+
+        <script src="bower_components/chrome-historian/src/historian.js"></script>
+        <script src="bower_components/underscore/underscore-min.js"></script>
+        <script src="bower_components/momentjs/moment.js" charset="utf-8"></script>
+        <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
+        <script src="bower_components/handlebars/handlebars.min.js"></script>
+        <script src="scripts/mmh.js"></script>
+    </body>
+</html>

@@ -1,0 +1,65 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  background-color: #E6E6E6;
+}
+
+.core-toolbar {
+  background-color: #3F5566;
+  color: white;
+  font-size: 1.3em;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+
+.glyph {
+  width: 24px;
+  height: 24px;
+  float: left;
+  background-size: cover;
+  margin-right: 12px;
+}
+
+.download .glyph {
+  background: transparent url(/images/ic_file_download_48px.svg) no-repeat;
+  background-size: cover;
+}
+
+.bookmarkAdded .glyph {
+  background: transparent url(/images/ic_bookmark_border_48px.svg) no-repeat;
+  background-size: cover;
+}
+
+.filters {
+  max-width: 70vw;
+  margin: auto;
+  padding: 18px;
+}
+
+.stream {
+  max-width: 70vw;
+  margin: auto;
+  background-color: #fff;
+  padding: 18px;
+  border-radius: 4px;
+}
+
+.stream-list,
+.stream-day-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.stream-day-list li {
+  line-height: 24px;
+  padding: 6px 0;
+}
+
+.stream-date-header {
+  margin: 8px auto;
+}
+
+.muted-text {
+  color: #888;
+}

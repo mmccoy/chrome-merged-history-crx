@@ -1,0 +1,9 @@
+{
+  "name": "activity-merge-crx",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "underscore": "~1.8.3",
+    "momentjs": "~2.10.3"
+  }
+}
