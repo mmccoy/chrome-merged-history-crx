@@ -5,6 +5,8 @@
   "devDependencies": {
     "underscore": "~1.8.3",
     "momentjs": "~2.10.3",
-    "chrome-historian": "~1.9.1"
+    "chrome-historian": "~1.9.1",
+    "jquery": "~2.1.4",
+    "handlebars": "~3.0.3"
   }
 }
