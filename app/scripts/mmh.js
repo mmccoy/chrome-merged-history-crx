@@ -87,6 +87,12 @@ Handlebars.registerHelper('trimFilename', function(context, block) {
   console.log(context, block);
 });
 
+$( ".type-filter" ).change(function(e) {
+  $('body').removeClass();
+  var selectedFilter = e.target.options[e.target.selectedIndex].value;
+  $('body').addClass('filter-' + selectedFilter);
+});
+
 setTimeout(function () {
   var stream = Merged.getMergedStream();
 }, 250);

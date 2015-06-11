@@ -67,3 +67,18 @@ body {
 .muted-text {
   color: #888;
 }
+
+.filter-downloads .urlVisited,
+.filter-downloads .bookmarkAdded {
+  display: none;
+}
+
+.filter-page_visits .download,
+.filter-page_visits .bookmarkAdded {
+  display: none;
+}
+
+.filter-bookmarks .download,
+.filter-bookmarks .urlVisited {
+  display: none;
+}
