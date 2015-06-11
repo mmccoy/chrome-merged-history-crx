@@ -10,19 +10,20 @@ body {
   color: white;
   font-size: 1.3em;
   padding: 24px;
-  margin-bottom: 16px;
 }
 
+.favicon {
+  width: 16px;
+  height: 16px;
+  margin-right: 12px;
+  line-height: 30px;
+}
 .glyph {
   width: 24px;
   height: 24px;
   float: left;
   background-size: cover;
   margin-right: 12px;
-}
-
-.download, .bookmarkAdded {
-  margin-left: 12px;
 }
 
 .download .glyph {
@@ -55,6 +56,10 @@ body {
   padding: 0;
   list-style: none;
 }
+.stream-day-list {
+  margin: 0 auto 2.6em;
+}
+
 .stream-day-list li {
   line-height: 24px;
   padding: 6px 0;
@@ -65,7 +70,7 @@ body {
 }
 
 .muted-text {
-  color: #888;
+  color: #969696;
 }
 
 .filter-downloads .urlVisited,
@@ -81,4 +86,23 @@ body {
 .filter-bookmarks .download,
 .filter-bookmarks .urlVisited {
   display: none;
+}
+
+
+.event {
+  display: flex;
+}
+
+.event .timestamp {
+  width: 100px;
+  font-size: .8em;
+}
+
+.event .host {
+  font-size: .8em;
+  margin-left: 12px;
+}
+
+.event .title {
+  font-size: .9em;
 }

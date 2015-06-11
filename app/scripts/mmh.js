@@ -2,7 +2,23 @@ Historian.setWorkerPath('bower_components/chrome-historian/src/workers/');
 
 var Merged = {};
 var devices = new Historian.Devices();
-var dayHistory = new Historian.Day(new Date());
+
+var today = moment().toDate();
+var yesterday = moment().subtract(1, 'days').toDate();
+
+var dayHistory = new Historian.Day(today);
+var yesterdayHistory = new Historian.Day(yesterday);
+
+moment.locale('en', {
+    calendar : {
+        lastDay : '[Yesterday]',
+        sameDay : '[Today]',
+        nextDay : '[Tomorrow at] LT',
+        lastWeek : '[last] dddd [at] LT',
+        nextWeek : 'dddd [at] LT',
+        sameElse : 'L'
+    }
+});
 
 devices.fetch(function(devices){
   if (devices) { Merged.devices = devices; }
@@ -13,7 +29,11 @@ chrome.bookmarks.getRecent(100, function(data) {
 });
 
 dayHistory.fetch(function(visits) {
-  Merged.visits = visits;
+  Merged.todayVisits = visits;
+});
+
+yesterdayHistory.fetch(function(visits) {
+  Merged.yesterdayVisits = visits;
 });
 
 Merged.renderTemplate = function(data) {
@@ -27,7 +47,9 @@ Merged.renderTemplate = function(data) {
 };
 
 Merged.getMergedStream = function() {
-  var merged = _.union(this.visits, this.bookmarks);
+  var merged = _.union(this.todayVisits, this.yesterdayVisits);
+  var merged = _.union(merged, this.bookmarks);
+
   for (var i = 0; i < merged.length; i++) {
     var item = merged[i];
 
@@ -49,6 +71,7 @@ Merged.getMergedStream = function() {
       item.eventType = 'download';
     }
     item.timeFromNow = moment(item.dateNormalized).fromNow();
+    item.calendarTime = moment(item.dateNormalized).calendar();
   }
 
   var mergedSorted = _.sortBy(merged, function(o) {
@@ -58,9 +81,9 @@ Merged.getMergedStream = function() {
   mergedSorted = mergedSorted.reverse();
 
   var groupedByDay = _.groupBy(mergedSorted, function(item) {
-    return item.dateNormalized.format('MMMM Do, YYYY');
+    // return item.dateNormalized.format('MMMM Do, YYYY');
+    return moment(item.dateNormalized).calendar();
   });
-
   this.renderTemplate(groupedByDay);
 };
 
@@ -83,8 +106,16 @@ Handlebars.registerHelper('ifEqual', function(item, eventType, options) {
     }
 });
 
-Handlebars.registerHelper('trimFilename', function(context, block) {
-  console.log(context, block);
+Handlebars.registerHelper ('truncate', function (str, len) {
+    if (str.length > len && str.length > 0) {
+        var new_str = str + " ";
+        new_str = str.substr (0, len);
+        new_str = str.substr (0, new_str.lastIndexOf(" "));
+        new_str = (new_str.length > 0) ? new_str : str.substr (0, len);
+
+        return new Handlebars.SafeString ( new_str +'...' );
+    }
+    return str;
 });
 
 $( ".type-filter" ).change(function(e) {

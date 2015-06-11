@@ -40,20 +40,26 @@
                 <ol class="stream-day-list">
                   {{#each this}}
                     <li class="event {{eventType}}">
+
                       {{#ifEqual this "urlVisited"}}
-                        <span class="muted-text">{{timeFromNow}}</span> - <img src="chrome://favicon/{{url}}" alt="">&nbsp; {{title}} <span class="muted-text">{{host}}</span>
+                        <span class="input"><input type="checkbox"></span>
+                        <span class="timestamp">{{timeFromNow}}</span>
+                        <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
+                        <span class="title">{{title}}</span>&nbsp;<span class="muted-text host">{{host}}</span>
                       {{/ifEqual}}
 
                       {{#ifEqual this "download"}}
-                        <div class="glyph"></div>
-                        <span class="muted-text">{{timeFromNow}}</span> -
-                        Downloaded {{filename}} <a href="file://{{filename}}">Open Folder</a>
+                        <span class="glyph"></span>
+                        <span class="title">Downloaded {{title}}</span>
+                        <span class="timestamp">{{timeFromNow}}</span>
+                        <span class="muted-text host">{{host}}</span>
                       {{/ifEqual}}
 
                       {{#ifEqual this "bookmarkAdded"}}
-                        <div class="glyph"></div>
-                        <span class="muted-text">{{timeFromNow}}</span> -
-                        {{title}} <span class="muted-text">{{host}}</span>
+                        <span class="glyph"></span>
+                        <span class="title">Bookmarked {{title}}</span>
+                        <span class="timestamp">{{timeFromNow}}</span>
+                        <span class="muted-text host">{{host}}</span>
                       {{/ifEqual}}
                     </li>
                   {{/each}}
