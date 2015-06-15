@@ -12,12 +12,6 @@ body {
   padding: 24px;
 }
 
-.favicon {
-  width: 16px;
-  height: 16px;
-  margin-right: 12px;
-  line-height: 30px;
-}
 .glyph {
   width: 24px;
   height: 24px;
@@ -45,9 +39,6 @@ body {
 .stream {
   max-width: 70vw;
   margin: auto;
-  background-color: #fff;
-  padding: 18px;
-  border-radius: 4px;
 }
 
 .stream-list,
@@ -58,15 +49,53 @@ body {
 }
 .stream-day-list {
   margin: 0 auto 2.6em;
+  background-color: #fff;
+  padding: 18px;
+  border-radius: 4px;
 }
 
 .stream-day-list li {
-  line-height: 24px;
-  padding: 6px 0;
+  line-height: 40px;
+  padding: 0;
+  align-items: center;
+}
+
+.stream-day-list li > span {
+  padding: 0 12px;
+}
+
+.stream-day-list li > span:first-child {
+  padding-left: 0;
+}
+
+.stream-day-list li > span:last-child {
+  padding-right: 0;
 }
 
 .stream-date-header {
   margin: 8px auto;
+}
+
+.hour-marker {
+  color: #888;
+  position: relative;
+}
+
+.hour-marker span:before,
+.hour-marker span:after {
+  border-top: 1px solid #d7d7d7;
+  display: block;
+  height: 1px;
+  content: "";
+  width: 60%;
+  position: absolute;
+  left: 0;
+  top: 1.3em;
+  margin-left: 60px;
+}
+.hour-marker span:after {
+   right: 0;
+   left: auto;
 }
 
 .muted-text {

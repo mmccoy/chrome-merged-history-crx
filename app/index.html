@@ -39,29 +39,30 @@
                 <li class="stream-date-header">{{@key}}</li>
                 <ol class="stream-day-list">
                   {{#each this}}
-                    <li class="event {{eventType}}">
+                      <li class="hour-marker"><span>{{@key}}</span></li>
+                      {{#each this}}
+                        <li class="event {{eventType}}">
+                        {{#ifEqual this "urlVisited"}}
+                          <span class="input"><input type="checkbox"></span>
+                          <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
+                          <span class="title">{{title}} <span class="muted-text host">{{host}}</span></span>
+                        {{/ifEqual}}
 
-                      {{#ifEqual this "urlVisited"}}
-                        <span class="input"><input type="checkbox"></span>
-                        <span class="timestamp">{{timeFromNow}}</span>
-                        <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
-                        <span class="title">{{title}}</span>&nbsp;<span class="muted-text host">{{host}}</span>
-                      {{/ifEqual}}
+                        {{#ifEqual this "download"}}
+                          <span class="glyph"></span>
+                          <span class="title">Downloaded {{title}}</span>
+                          <span class="timestamp">{{timeFromNow}}</span>
+                          <span class="muted-text host">{{host}}</span>
+                        {{/ifEqual}}
 
-                      {{#ifEqual this "download"}}
-                        <span class="glyph"></span>
-                        <span class="title">Downloaded {{title}}</span>
-                        <span class="timestamp">{{timeFromNow}}</span>
-                        <span class="muted-text host">{{host}}</span>
-                      {{/ifEqual}}
-
-                      {{#ifEqual this "bookmarkAdded"}}
-                        <span class="glyph"></span>
-                        <span class="title">Bookmarked {{title}}</span>
-                        <span class="timestamp">{{timeFromNow}}</span>
-                        <span class="muted-text host">{{host}}</span>
-                      {{/ifEqual}}
-                    </li>
+                        {{#ifEqual this "bookmarkAdded"}}
+                          <span class="glyph"></span>
+                          <span class="title">Bookmarked {{title}}</span>
+                          <span class="timestamp">{{timeFromNow}}</span>
+                          <span class="muted-text host">{{host}}</span>
+                        {{/ifEqual}}
+                        </li>
+                      {{/each}}
                   {{/each}}
                 </ol>
               {{/each}}
