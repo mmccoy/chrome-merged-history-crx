@@ -42,26 +42,17 @@
                       <li class="hour-marker"><span>{{@key}}</span></li>
                       {{#each this}}
                         <li class="event {{eventType}}">
-                        {{#ifEqual this "urlVisited"}}
-                          <span class="input"><input type="checkbox"></span>
-                          <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
-                          <span class="title">{{title}} <span class="muted-text host">{{host}}</span></span>
-                        {{/ifEqual}}
+                            <span class="input"><input type="checkbox"></span>
+                            <span class="glyph {{#if bookmarked}}bookmarked{{/if}} {{#if downloaded}}download{{/if}}"></span>
+                            <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
+                            <span class="title"><a href="{{url}}" target="_blank">{{title}}</a> <span class="muted-text host">{{host}}</span></span>
 
-                        {{#ifEqual this "download"}}
-                          <span class="glyph"></span>
-                          <span class="title">Downloaded {{title}}</span>
-                          <span class="timestamp">{{timeFromNow}}</span>
-                          <span class="muted-text host">{{host}}</span>
-                        {{/ifEqual}}
-
-                        {{#ifEqual this "bookmarkAdded"}}
-                          <span class="glyph"></span>
-                          <span class="title">Bookmarked {{title}}</span>
-                          <span class="timestamp">{{timeFromNow}}</span>
-                          <span class="muted-text host">{{host}}</span>
-                        {{/ifEqual}}
-                        </li>
+<!--                           {{#ifEqual this "download"}}
+  <span class="title">Downloaded {{title}}</span>
+  <span class="timestamp">{{timeFromNow}}</span>
+  <span class="muted-text host">{{host}}</span>
+{{/ifEqual}}
+ -->                        </li>
                       {{/each}}
                   {{/each}}
                 </ol>
@@ -75,6 +66,7 @@
         <script src="bower_components/momentjs/moment.js" charset="utf-8"></script>
         <script src="bower_components/jquery/dist/jquery.min.js" charset="utf-8"></script>
         <script src="bower_components/handlebars/handlebars.min.js"></script>
+        <script src="scripts/util.js"></script>
         <script src="scripts/mmh.js"></script>
     </body>
 </html>

@@ -13,21 +13,22 @@ body {
 }
 
 .glyph {
-  width: 24px;
-  height: 24px;
-  float: left;
-  background-size: cover;
-  margin-right: 12px;
+  width: 16px;
+  height: 16px;
 }
 
-.download .glyph {
+.glyph.bookmarked {
+  /* background: transparent url(/images/ic_bookmark_border_48px.svg) no-repeat; */
+  background: transparent url(/images/star.png) no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.glyph.download {
+  /* background: transparent url(/images/ic_bookmark_border_48px.svg) no-repeat; */
   background: transparent url(/images/ic_file_download_48px.svg) no-repeat;
-  background-size: cover;
-}
-
-.bookmarkAdded .glyph {
-  background: transparent url(/images/ic_bookmark_border_48px.svg) no-repeat;
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
 }
 
 .filters {
@@ -50,7 +51,7 @@ body {
 .stream-day-list {
   margin: 0 auto 2.6em;
   background-color: #fff;
-  padding: 18px;
+  padding: 18px 0;
   border-radius: 4px;
 }
 
@@ -58,6 +59,7 @@ body {
   line-height: 40px;
   padding: 0;
   align-items: center;
+  padding: 0 18px;
 }
 
 .stream-day-list li > span {
