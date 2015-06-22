@@ -153,6 +153,10 @@ body {
   font-size: .9em;
 }
 
+.event-selected {
+  background-color: #ECF2FD;
+}
+
 .host-group li:not(:first-child) {
   height: 0;
   overflow: hidden;

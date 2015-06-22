@@ -111,5 +111,9 @@ setTimeout(function () {
       target = el.toElement.parentNode;
     }
     target.parentNode.classList.toggle('expanded');
+  });
+
+  $('.row-select').on('click', function (el) {
+    el.toElement.parentNode.parentNode.classList.toggle('event-selected');
   })
 }, 250);
