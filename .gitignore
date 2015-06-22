@@ -3,6 +3,8 @@ temp
 .tmp
 dist
 .sass-cache
-app/bower_components
+!app/bower_components
+app/bower_components/*
+!app/bower_components/chrome-historian
 test/bower_components
 package

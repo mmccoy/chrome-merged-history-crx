@@ -1,0 +1,40 @@
+{
+  "name": "chrome-historian",
+  "version": "1.9.1",
+  "homepage": "https://github.com/better-history/chrome-historian",
+  "authors": [
+    "Roy Kolak <roy.kolak@gmail.com>"
+  ],
+  "description": "Wrapper around Chrome's history and session API",
+  "main": [
+    "src/historian.js",
+    "src/workers/groomer.js",
+    "src/workers/range_sanitizer.js",
+    "src/workers/search_sanitizer.js"
+  ],
+  "keywords": [
+    "chrome",
+    "extensions",
+    "js",
+    "history",
+    "browser"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "lib"
+  ],
+  "_release": "1.9.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.9.1",
+    "commit": "42b4e8b6541bf842c3191fdaec71af7749643d53"
+  },
+  "_source": "git://github.com/better-history/chrome-historian.git",
+  "_target": "~1.9.1",
+  "_originalSource": "chrome-historian",
+  "_direct": true
+}
