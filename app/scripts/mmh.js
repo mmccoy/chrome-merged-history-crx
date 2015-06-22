@@ -46,10 +46,27 @@ Merged.renderTemplate = function(data) {
 };
 
 Merged.isBookmarked = function(item) {
-  for (var i = 0; i < Merged.bookmarks.length; i++) {
-    return item.url == Merged.bookmarks[i];
+  // console.log(item.url);
+  var saved = false;
+  function checkIfSaved() {
+    for (var i = 0; i < Merged.bookmarks.length; i++) {
+      if (item.url == Merged.bookmarks[i]) {
+        saved = true;
+      }
+    }
   }
+  checkIfSaved();
+  return saved;
 };
+
+// function init() {
+//   var name = "Mozilla"; // name is a local variable created by init
+//   function displayName() { // displayName() is the inner function, a closure
+//     alert(name); // use variable declared in the parent function
+//   }
+//   displayName();
+// }
+// init();
 
 Merged.getMergedStream = function() {
   var merged = _.union(this.todayVisits, this.yesterdayVisits);

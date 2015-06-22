@@ -154,7 +154,7 @@ body {
 }
 
 .event-selected {
-  background-color: #ECF2FD;
+  background-color: #ECF2FD !important;
 }
 
 .host-group li:not(:first-child) {
