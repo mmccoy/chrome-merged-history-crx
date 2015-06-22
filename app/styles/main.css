@@ -160,17 +160,16 @@ body {
 .host-group li:not(:first-child) {
   height: 0;
   overflow: hidden;
-  -webkit-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
-  -o-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
-  transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
 }
+
+.host-group li:not(:first-child) .favicon-img {
+  visibility: hidden;
+}
+
 .host-group.expanded li:not(:first-child) {
   height: auto;
   overflow: visible;
   background-color: rgba(255,255,255,.5);
-  -webkit-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
-  -o-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
-  transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
 }
 .host-group.expanded li:not(:first-child) .count {
   display: none;
