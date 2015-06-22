@@ -59,27 +59,12 @@ Merged.isBookmarked = function(item) {
   return saved;
 };
 
-// function init() {
-//   var name = "Mozilla"; // name is a local variable created by init
-//   function displayName() { // displayName() is the inner function, a closure
-//     alert(name); // use variable declared in the parent function
-//   }
-//   displayName();
-// }
-// init();
-
 Merged.getMergedStream = function() {
   var merged = _.union(this.todayVisits, this.yesterdayVisits);
   // var merged = _.union(merged, this.bookmarks);
 
   for (var i = 0; i < merged.length; i++) {
     var item = merged[i];
-
-    // Bookmark event
-    // if (item.dateAdded) {
-    //   item.dateNormalized = moment(item.dateAdded);
-    //   item.eventType = 'bookmarkAdded';
-    // } ;
 
     // Page visit event
     if(item.lastVisitTime) {
