@@ -74,6 +74,11 @@ body {
   padding-right: 0;
 }
 
+.favicon-img {
+  width: 16px;
+  height: 16px;
+}
+
 .stream-date-header {
   margin: 8px auto;
 }
@@ -122,6 +127,16 @@ body {
 
 .event {
   display: flex;
+  cursor: pointer;
+}
+
+.event a {
+  color: #111;
+  text-decoration: none;
+}
+
+.event a:hover {
+  text-decoration: underline;
 }
 
 .event .timestamp {
@@ -136,4 +151,27 @@ body {
 
 .event .title {
   font-size: .9em;
+}
+
+.host-group li:not(:first-child) {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+  -o-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+  transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+}
+.host-group.expanded li:not(:first-child) {
+  height: auto;
+  overflow: visible;
+  background-color: rgba(255,255,255,.5);
+  -webkit-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+  -o-transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+  transition: transition: all cubic-brezier(.62,.28,.23,.99) 0.7s;
+}
+.host-group.expanded li:not(:first-child) .count {
+  display: none;
+}
+
+.length-1 {
+  display: none;
 }

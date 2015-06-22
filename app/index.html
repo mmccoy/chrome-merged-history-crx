@@ -30,7 +30,6 @@
               <option value="downloads">downloads</option>
               <option value="bookmarks">bookmarks</option>
             </select>
-          from my_device
         </div>
         <div class="stream">
           <script type="text/x-handlebars-template" id="historyTemplate">
@@ -41,18 +40,16 @@
                   {{#each this}}
                       <li class="hour-marker"><span>{{@key}}</span></li>
                       {{#each this}}
-                        <li class="event {{eventType}}">
-                            <span class="input"><input type="checkbox"></span>
-                            <span class="glyph {{#if bookmarked}}bookmarked{{/if}} {{#if downloaded}}download{{/if}}"></span>
-                            <span class="favicon"><img class="favicon" src="chrome://favicon/{{url}}" alt=""></span>
-                            <span class="title"><a href="{{url}}" target="_blank">{{title}}</a> <span class="muted-text host">{{host}}</span></span>
-
-<!--                           {{#ifEqual this "download"}}
-  <span class="title">Downloaded {{title}}</span>
-  <span class="timestamp">{{timeFromNow}}</span>
-  <span class="muted-text host">{{host}}</span>
-{{/ifEqual}}
- -->                        </li>
+                        {{#each this}}
+                          {{#if @first}}<div class="host-group">{{/if}}
+                          <li class="event {{eventType}}">
+                              <span class="input"><input type="checkbox"></span>
+                              <span class="glyph {{#if bookmarked}}bookmarked{{/if}} {{#if downloaded}}download{{/if}}"></span>
+                              <span class="favicon"><img class="favicon-img" src="chrome://favicon/{{url}}" alt=""></span>
+                              <span class="title"><span class="count length-{{../this.length}}">({{../this.length}})</span>&nbsp;<a href="{{url}}" target="_blank">{{title}}</a> <span class="muted-text host">{{host}}</span></span>
+                          </li>
+                          {{#if @last}}</div>{{/if}}
+                        {{/each}}
                       {{/each}}
                   {{/each}}
                 </ol>

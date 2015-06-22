@@ -74,7 +74,6 @@ Merged.getMergedStream = function() {
     if (item.bytesReceived) {
       item.dateNormalized = moment(item.endTime);
       item.downloaded = true;
-      item.visitParent = merged[i-1];
       item.eventType = 'download';
     }
 
@@ -90,7 +89,7 @@ Merged.getMergedStream = function() {
   });
 
   mergedSorted = mergedSorted.reverse();
-  var grouped = _.groupByMulti(mergedSorted, ['calendarTime', 'hour']);
+  var grouped = _.groupByMulti(mergedSorted, ['calendarTime', 'hour', 'host']);
   this.renderTemplate(grouped);
 };
 
@@ -100,6 +99,17 @@ $( ".type-filter" ).change(function(e) {
   $('body').addClass('filter-' + selectedFilter);
 });
 
+
+
 setTimeout(function () {
   var stream = Merged.getMergedStream();
+  $('.host-group > li').on('click', function (el) {
+    var target;
+    if (el.toElement.tagName == 'LI') {
+      target = el.toElement;
+    } else {
+      target = el.toElement.parentNode;
+    }
+    target.parentNode.classList.toggle('expanded');
+  })
 }, 250);
