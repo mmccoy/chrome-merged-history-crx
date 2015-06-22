@@ -106,16 +106,13 @@ $( ".type-filter" ).change(function(e) {
 setTimeout(function () {
   var stream = Merged.getMergedStream();
   $('.host-group > li').on('click', function (el) {
-    var target;
-    if (el.toElement.tagName == 'LI') {
-      target = el.toElement;
-    } else {
-      target = el.toElement.parentNode;
+    if (el.toElement.tagName != 'INPUT') {
+      el.currentTarget.parentNode.classList.toggle('expanded');
     }
-    target.parentNode.classList.toggle('expanded');
   });
 
   $('.row-select').on('click', function (el) {
+    el.currentTarget;
     el.toElement.parentNode.parentNode.classList.toggle('event-selected');
   })
 }, 250);
