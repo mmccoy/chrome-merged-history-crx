@@ -77,6 +77,8 @@ body {
 .favicon-img {
   width: 16px;
   height: 16px;
+  position: relative;
+  top: 4px;
 }
 
 .stream-date-header {
@@ -177,4 +179,20 @@ body {
 
 .length-1 {
   display: none;
+}
+
+.download {
+  margin-left: 40px;
+}
+
+.download input {
+  visibility: hidden;
+}
+
+.download .favicon {
+  display: none;
+}
+
+.download .title {
+  padding-left: 0;
 }

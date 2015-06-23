@@ -82,7 +82,14 @@ Merged.getMergedStream = function() {
     item.timeFromNow = moment(item.dateNormalized).fromNow();
     item.calendarTime = moment(item.dateNormalized).calendar();
     item.hour = moment(item.dateNormalized).format('h A');
-    item.title = _.truncateString(item.title, 100);
+    if (item.title.indexOf('q=') != -1 && item.url.indexOf('google.com')) {
+      var re = /.+(q=.+)[&.+]?/i;
+      var found = item.title.match(re);
+      var queryString = decodeURIComponent(found[1]).substr(2);
+      item.title = 'Google Search: ' + queryString;
+    } else {
+      item.title = _.truncateString(item.title, 100);
+    }
     item.bookmarked = this.isBookmarked(item);
   };
 

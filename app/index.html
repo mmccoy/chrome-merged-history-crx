@@ -42,12 +42,17 @@
                       {{#each this}}
                         {{#each this}}
                           {{#if @first}}<div class="host-group">{{/if}}
-                          <li class="event {{eventType}}">
-                              <span class="input"><input class="row-select" type="checkbox"></span>
-                              <span class="glyph {{#if bookmarked}}bookmarked{{/if}} {{#if downloaded}}download{{/if}}"></span>
-                              <span class="favicon"><img class="favicon-img" src="chrome://favicon/{{url}}" alt=""></span>
-                              <span class="title"><span class="count length-{{../this.length}}">({{../this.length}})</span>&nbsp;<a href="{{url}}" target="_blank">{{title}}</a> <span class="muted-text host">{{host}}</span></span>
-                          </li>
+                            <li class="event {{eventType}}">
+                                <span class="input"><input class="row-select" type="checkbox"></span>
+                                <span class="glyph {{#if bookmarked}}bookmarked{{/if}} {{#if downloaded}}download{{/if}}"></span>
+                                <span class="favicon"><img class="favicon-img" src="chrome://favicon/{{url}}" alt=""></span>
+                                <span class="title">
+                                  <!-- <span class="datestamp muted-text">{{#unless @first}}{{dateFormat dateNormalized format="h:m"}}{{/unless}}</span>&nbsp; -->
+                                  <span class="count length-{{../this.length}}">({{../this.length}})&nbsp;</span>
+                                  <a href="{{url}}" target="_blank">{{title}}</a>
+                                  <span class="muted-text host">{{host}}</span>
+                                </span>
+                            </li>
                           {{#if @last}}</div>{{/if}}
                         {{/each}}
                       {{/each}}
